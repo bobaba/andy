@@ -1,0 +1,37 @@
+<%= form_for(resource) do |f| %>
+  <% if resource.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(resource.errors.count, "error") %> prohibited this resource from being saved:</h2>
+
+      <ul>
+      <% resource.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :binomial %>
+    <%= f.text_field :binomial %>
+  </div>
+
+  <div class="field">
+    <%= f.label :common %>
+    <%= f.text_field :common %>
+  </div>
+
+  <div class="field">
+    <%= f.label :pictures %>
+    <%= f.text_field :pictures %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

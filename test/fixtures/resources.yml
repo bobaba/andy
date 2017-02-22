@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  binomial: MyString
+  common: MyString
+  pictures: MyString
+  description: MyText
+
+two:
+  binomial: MyString
+  common: MyString
+  pictures: MyString
+  description: MyText
