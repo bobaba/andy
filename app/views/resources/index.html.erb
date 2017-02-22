@@ -2,7 +2,7 @@
 
 <h1>Resources</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Binomial</th>
@@ -19,7 +19,7 @@
         <td><%= resource.binomial %></td>
         <td><%= resource.common %></td>
         <td><%= resource.pictures %></td>
-        <td><%= resource.description %></td>
+        <td><%= resource.description.html_safe %></td>
         <td><%= link_to 'Show', resource %></td>
         <td><%= link_to 'Edit', edit_resource_path(resource) %></td>
         <td><%= link_to 'Destroy', resource, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -132,6 +132,8 @@ GEM
     thor (0.19.4)
     thread_safe (0.3.5)
     tilt (2.0.6)
+    trix (0.10.1)
+      rails
     turbolinks (5.0.1)
       turbolinks-source (~> 5)
     turbolinks-source (5.0.0)
@@ -166,6 +168,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   simple_calendar (~> 2.0)
   sqlite3
+  trix
   turbolinks (~> 5)
   tzinfo-data
   uglifier (>= 1.3.0)
