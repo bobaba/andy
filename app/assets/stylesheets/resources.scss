@@ -5,3 +5,46 @@
 .showPics{
   max-width: 300px;
 }
+
+.plantName{
+  background-color: #af6e34;
+  border: 2px solid yellow;
+  background-size: cover;
+  font-family: 'comic', sans-serif;
+  text-align: center;
+}
+.plantCName{
+  font-size: 2.5em;
+}
+.plantLName{
+  font-size: 2em;
+}
+
+.plantPictures img{
+  border: 2px solid yellow;
+  max-width: 100%;
+  height: auto;
+}
+.plantPictures{
+  font-size: 2em;
+  background-color: #af6e34;
+  border: 2px solid yellow;
+  text-align: center;
+
+}
+
+.plantDesc{
+  border: 2px solid yellow;
+  background-color: brown;
+  color: white;
+  font-size: 1.5em;
+  padding: 5px;
+}
+
+.searchBar{
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  background-color:#26ad79;
+  z-index:1;
+}

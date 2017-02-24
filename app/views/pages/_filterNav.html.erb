@@ -1,4 +1,4 @@
-
+<div class="searchBar">
   <%= link_to "All", plantdb_path, class: "btn btn-warning" %>
   <%= form_tag plantdb_path, :method => 'get' do %>
   <p>
@@ -6,7 +6,7 @@
       <%= submit_tag "Search", :name => nil, class: "btn btn-danger" %>
   </p>
   <% end %>
-
+</div>
   <!-- <div class="btn-group">
     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       Genus <span class="caret"></span>
