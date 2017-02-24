@@ -1,13 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Resources</h1>
+<span class="glyphicon glyphicon-plus"></span><%= link_to 'New Resource', new_resource_path, :style => 'color:white;'%>
 
 <table class="table">
   <thead>
     <tr>
       <th>Binomial</th>
       <th>Common</th>
-      <th>Pictures</th>
       <th>Description</th>
       <th colspan="3"></th>
     </tr>
@@ -18,7 +18,6 @@
       <tr>
         <td><%= resource.binomial %></td>
         <td><%= resource.common %></td>
-        <td><%= resource.pictures %></td>
         <td><%= resource.description.html_safe %></td>
         <td><%= link_to 'Show', resource %></td>
         <td><%= link_to 'Edit', edit_resource_path(resource) %></td>
@@ -29,5 +28,3 @@
 </table>
 
 <br>
-
-<%= link_to 'New Resource', new_resource_path %>

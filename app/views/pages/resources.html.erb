@@ -1,0 +1,21 @@
+<%= link_to 'Home', root_path, class: "btn btn-warning" %>
+<div class="container">
+<h1>Plant Database</h1>
+
+  <div class="row">
+    <% @resources.sort.each do |plant| %>
+    <div class="col-md-4">
+      <div class="panel panel-default" style="background:transparent;">
+        <div class="panel-body" style="text-align:center;overflow:hidden;">
+          <%= link_to plant do %>
+            <%= image_tag plant.resource_attachments[0].picture_url, class: 'showPics' %>
+          <% end %>
+
+          <%= link_to plant.binomial, plant, class: "btn btn-danger", :style => 'width:100%;' %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+
+</div>

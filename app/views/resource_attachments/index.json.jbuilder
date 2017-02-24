@@ -1,0 +1,1 @@
+json.array! @resource_attachments, partial: 'resource_attachments/resource_attachment', as: :resource_attachment

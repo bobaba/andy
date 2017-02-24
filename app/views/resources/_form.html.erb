@@ -1,4 +1,4 @@
-<%= form_for(resource) do |f| %>
+<%= form_for(@resource, :html => { :multipart => true }) do |f| %>
   <% if resource.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(resource.errors.count, "error") %> prohibited this resource from being saved:</h2>
@@ -21,17 +21,19 @@
     <%= f.text_field :common, class: 'form-control' %>
   </div>
 
-  <div class="form-group">
-    <%= f.label :pictures %>
-    <%= f.text_field :pictures, class: 'form-control' %>
-  </div>
+  <%= f.fields_for :resource_attachments do |p| %>
+     <div class="field">
+       <%= p.label :picture %><br>
+       <%= p.file_field :picture, :multiple => true, name: "resource_attachments[picture][]" %>
+     </div>
+   <% end %>
 
   <div class="form-group" style="max-width:500px;">
     <%= f.label :description %>
     <%= f.trix_editor :description %>
   </div>
 
-  <div class="actions">
+  <div class="actions" style="color:black;">
     <%= f.submit %>
   </div>
 <% end %>

@@ -10,12 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170222025250) do
+ActiveRecord::Schema.define(version: 20170224003956) do
+
+  create_table "plant_pictures", force: :cascade do |t|
+    t.integer  "resource_id"
+    t.string   "picture"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "resource_attachments", force: :cascade do |t|
+    t.integer  "resource_id"
+    t.string   "picture"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "caption"
+  end
 
   create_table "resources", force: :cascade do |t|
     t.string   "binomial"
     t.string   "common"
-    t.string   "pictures"
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false

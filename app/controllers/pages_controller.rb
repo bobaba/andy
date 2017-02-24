@@ -6,6 +6,7 @@ class PagesController < ApplicationController
   end
 
   def resources
+    @resources = Resource.all
   end
 
   def map_florida

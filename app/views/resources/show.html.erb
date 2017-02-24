@@ -11,8 +11,12 @@
 </p>
 
 <p>
-  <strong>Pictures:</strong>
-  <%= @resource.pictures %>
+  <% @resource_attachments.each do |p| %>
+    <%= image_tag p.picture_url, class: 'showPics' %><br>
+    <%= p.caption %><br>
+    <%= link_to "Edit Attachment", edit_resource_attachment_path(p) %>
+    <br><br>
+  <% end %>
 </p>
 
 <p>

@@ -1,0 +1,2 @@
+module ResourceAttachmentsHelper
+end

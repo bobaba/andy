@@ -1,0 +1,15 @@
+
+<%= image_tag @resource_attachment.picture, class: 'showPics' %>
+<%= form_for(@resource_attachment) do |f| %>
+  <div class="field">
+    <%= f.label :picture %><br>
+    <%= f.file_field :picture %>
+  </div>
+  <div class="field">
+    <%= f.label :caption %><br>
+    <%= f.text_field :caption, :style => 'color:black;' %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

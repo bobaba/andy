@@ -10,11 +10,13 @@ class ResourcesController < ApplicationController
   # GET /resources/1
   # GET /resources/1.json
   def show
+    @resource_attachments = @resource.resource_attachments.all
   end
 
   # GET /resources/new
   def new
     @resource = Resource.new
+    @resource_attachment = @resource.resource_attachments.build
   end
 
   # GET /resources/1/edit
@@ -28,6 +30,9 @@ class ResourcesController < ApplicationController
 
     respond_to do |format|
       if @resource.save
+        params[:resource_attachments]['picture'].each do |a|
+          @resource_attachment = @resource.resource_attachments.create!(:picture => a)
+       end
         format.html { redirect_to @resource, notice: 'Resource was successfully created.' }
         format.json { render :show, status: :created, location: @resource }
       else
@@ -55,6 +60,7 @@ class ResourcesController < ApplicationController
   # DELETE /resources/1.json
   def destroy
     @resource.destroy
+    @resource.resource_attachments.destroy_all
     respond_to do |format|
       format.html { redirect_to resources_url, notice: 'Resource was successfully destroyed.' }
       format.json { head :no_content }
@@ -69,6 +75,6 @@ class ResourcesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def resource_params
-      params.require(:resource).permit(:binomial, :common, :pictures, :description)
+      params.require(:resource).permit(:binomial, :common, :description, resource_attachments_attributes: [:id, :resource_id, :picture, :caption])
     end
 end

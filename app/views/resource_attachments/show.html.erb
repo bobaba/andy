@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Resource:</strong>
+  <%= @resource_attachment.resource_id %>
+</p>
+
+<p>
+  <strong>Picture:</strong>
+  <%= @resource_attachment.picture %>
+</p>
+
+<%= link_to 'Edit', edit_resource_attachment_path(@resource_attachment) %> |
+<%= link_to 'Back', resource_path(@resource_attachment.resource_id) %>

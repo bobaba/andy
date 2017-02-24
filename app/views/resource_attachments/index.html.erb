@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Resource Attachments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Resource</th>
+      <th>Picture</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @resource_attachments.each do |resource_attachment| %>
+      <tr>
+        <td><%= resource_attachment.resource_id %></td>
+        <td><%= resource_attachment.picture %></td>
+        <td><%= link_to 'Show', resource_attachment %></td>
+        <td><%= link_to 'Edit', edit_resource_attachment_path(resource_attachment) %></td>
+        <td><%= link_to 'Destroy', resource_attachment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Resource Attachment', new_resource_attachment_path %>

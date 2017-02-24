@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
+  resources :resource_attachments
   resources :resources
   get 'pages/index'
-  get 'calendar' => 'pages/calendar'
-  get 'resources' => 'pages/resources'
-  get 'map' => 'pages/map_florida'
+  get 'calendar' => 'pages#calendar'
+  get 'plantdb' => 'pages#resources'
+  get 'map' => 'pages#map_florida'
 
   root 'pages#index'
 

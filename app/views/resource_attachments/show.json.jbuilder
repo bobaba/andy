@@ -1,0 +1,1 @@
+json.partial! "resource_attachments/resource_attachment", resource_attachment: @resource_attachment
