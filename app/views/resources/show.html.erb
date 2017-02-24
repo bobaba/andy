@@ -1,5 +1,12 @@
 <p id="notice"><%= notice %></p>
+
 <div class="container">
+<% if current_user %>
+  <%= link_to 'Edit', edit_resource_path(@resource), class: "btn btn-warning" %>
+<% end %>
+<%= link_to 'Back', plantdb_path, class: "btn btn-danger" %>
+</div>
+<div class="container resourceBG">
 
 <div class="plantName">
   <div class="plantCName">
@@ -10,25 +17,25 @@
   </div>
 </div>
 
+<!-- <h3 class="labelBox">Description</h3> -->
 
+<div class="plantDesc">
+  <%= @resource.description.html_safe %>
+</div>
+
+<!-- <h3 class="labelBox">Pictures</h3> -->
   <% @resource_attachments.each do |p| %>
   <div class="plantPictures">
-    <%= image_tag p.picture_url %><br>
+    <%= link_to p.picture_url do %>
+      <%= image_tag p.picture_url %>
+      <%end%> <br>
     <%= p.caption %><br>
-    <%= link_to "Edit Attachment", edit_resource_attachment_path(p) %>
+    <% if current_user %>
+      <%= link_to "Edit Attachment", edit_resource_attachment_path(p) %>
+    <% end  %>
   </div>
   <% end %>
 
 
-<div class="plantDesc">
-  <strong>Description:</strong>
-  <%= @resource.description.html_safe %>
-</div>
 
-<%= link_to 'Edit', edit_resource_path(@resource) %> |
-
-<%# if current_user %>
-<%#= link_to 'Manage Resources', resources_path %>
-<%# end %>
-<%= link_to 'Back', plantdb_path %>
 </div>

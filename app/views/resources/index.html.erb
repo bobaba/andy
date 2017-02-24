@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
-
+<% if current_user %>
+  <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-danger" %>
+<% end %>
 <h1>Resources</h1>
 <span class="glyphicon glyphicon-plus"></span><%= link_to 'New Resource', new_resource_path, :style => 'color:white;'%>
 

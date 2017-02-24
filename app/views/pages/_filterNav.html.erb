@@ -1,10 +1,11 @@
 <div class="searchBar">
-  <%= link_to "All", plantdb_path, class: "btn btn-warning" %>
+  <h3>Plant Database</h3>
+  <%= link_to "Home", root_path, class: "btn btn-danger"%><%= link_to "All", plantdb_path, class: "btn btn-warning" %>
   <%= form_tag plantdb_path, :method => 'get' do %>
-  <p>
+    <p>
       <%= text_field_tag :search, params[:search], :style => "color:black;" %>
       <%= submit_tag "Search", :name => nil, class: "btn btn-danger" %>
-  </p>
+    </p>
   <% end %>
 </div>
   <!-- <div class="btn-group">

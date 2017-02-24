@@ -35,10 +35,18 @@
     </div>
     <!-- /.container -->
 </nav>
+
     <!-- Intro Header -->
     <header class="intro">
         <div class="intro-body">
             <div class="container">
+              <% unless flash[:alert].nil? %>
+                <div class="alert alert-danger alert-dismissible fade-in">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <%= flash[:alert] %></div>
+              <%end%>
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
                         <h1 class="brand-heading">Bamboo Grove</h1>
@@ -101,5 +109,6 @@
     <footer>
         <div class="container text-center">
             <p>Copyright &copy; Your Website 2016</p>
+            <p>Thanks to <%= link_to "Andy Firk", new_user_session_path, :style => "color:white;" %>!</p>
         </div>
     </footer>
