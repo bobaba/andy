@@ -4,6 +4,7 @@
 
 .showPics{
   max-width: 300px;
+  height: 200px;
 }
 
 .resourceBG{
@@ -77,4 +78,26 @@
 
 .searchBar h3{
   margin-bottom: 5px;
+}
+
+// EDITING VIEWS
+.textField{
+  background-color: transparent;
+  border: none;
+  text-align: center;
+  width: 100%;
+}
+.button_row{
+  background: white;
+}
+
+.filin{
+  margin: auto;
+}
+
+.changePic{
+  background: #c63338;
+  border: 2px solid yellow;
+  color: white;
+  margin: 10px;
 }

@@ -1,15 +1,22 @@
+<div class="container resourceBG">
+  <div class="plantPictures">
+    <%= image_tag @resource_attachment.picture, class: 'showPics' %>
+    <%= form_for(@resource_attachment) do |f| %>
+      <div class="field">
+        <%= f.text_field :caption, placeholder: "Add a caption!", class: 'textField' %>
+      </div>
+      <br>
+      <div class="field changePic">
+        <strong>Change Picture</strong><br>
+        <small>Warning: do not do anything here unless you wish to change the picture!</small>
+        <br><br>
+        <%= f.file_field :picture, class: 'filin' %>
+        <br><br>
+      </div>
 
-<%= image_tag @resource_attachment.picture, class: 'showPics' %>
-<%= form_for(@resource_attachment) do |f| %>
-  <div class="field">
-    <%= f.label :picture %><br>
-    <%= f.file_field :picture %>
+      <div class="actions" align="center">
+        <%= f.submit "Update Picture", class: "btn btn-warning btn-lg" %>
+      </div>
   </div>
-  <div class="field">
-    <%= f.label :caption %><br>
-    <%= f.text_field :caption, :style => 'color:black;' %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+  <% end %>
+</div>

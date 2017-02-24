@@ -1,6 +1,6 @@
 class ResourceAttachmentsController < ApplicationController
   before_action :set_resource_attachment, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:show, :index]
+  before_action :authenticate_user!, except: [:show]
   load_and_authorize_resource
   skip_authorize_resource :only => :show
 
@@ -45,7 +45,7 @@ class ResourceAttachmentsController < ApplicationController
   def update
     respond_to do |format|
     if @resource_attachment.update(resource_attachment_params)
-      format.html { redirect_to @resource_attachment.resource, notice: 'Post attachment was successfully updated.' }
+      format.html { redirect_to edit_resource_path(@resource_attachment.resource_id), notice: 'Post attachment was successfully updated.' }
     end
   end
   end
@@ -54,8 +54,10 @@ class ResourceAttachmentsController < ApplicationController
   # DELETE /resource_attachments/1.json
   def destroy
     @resource_attachment.destroy
+    Dir.delete("public/uploads/resource_attachment/picture/#{@resource_attachment.id}")
     respond_to do |format|
-      format.html { redirect_to resource_attachments_url, notice: 'Resource attachment was successfully destroyed.' }
+      # IDEALredirect => edit_resource_path(@resource_attachment.resource_id)
+      format.html { redirect_to edit_resource_path(@resource_attachment.resource_id), notice: 'Resource attachment was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

@@ -1,10 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <div class="container">
+
+<%= link_to 'Back', plantdb_path, class: "btn btn-primary" %>
 <% if current_user %>
   <%= link_to 'Edit', edit_resource_path(@resource), class: "btn btn-warning" %>
+  <%= link_to 'Remove Plant File', resource_path(@resource.id), method: :delete, class: "btn btn-danger", data: { confirm: "Are you sure you want to remove this plant file?"} %>
 <% end %>
-<%= link_to 'Back', plantdb_path, class: "btn btn-danger" %>
 </div>
 <div class="container resourceBG">
 
@@ -30,9 +32,6 @@
       <%= image_tag p.picture_url %>
       <%end%> <br>
     <%= p.caption %><br>
-    <% if current_user %>
-      <%= link_to "Edit Attachment", edit_resource_attachment_path(p) %>
-    <% end  %>
   </div>
   <% end %>
 

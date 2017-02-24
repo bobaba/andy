@@ -1,4 +1,9 @@
 <div class="container">
+<div align="right">
+  <% if current_user %>
+    <%= link_to "Add New Plant", new_resource_path, class: "btn btn-warning" %>
+  <% end %>
+</div>
 <%= render 'pages/filterNav' %>
 
   <div class="row">
@@ -7,7 +12,11 @@
       <div id="<%= plant.binomial.gsub(" ", '')%>" class="panel panel-default" style="background:transparent;">
         <div class="panel-body" style="text-align:center;overflow:hidden;">
           <%= link_to plant do %>
-            <%= image_tag plant.resource_attachments[0].picture_url, class: 'showPics' %>
+            <% if plant.resource_attachments[0] == nil %>
+              <%= image_tag image_path("no-image.jpg"), class: 'showPics' %>
+            <% else %>
+              <%= image_tag plant.resource_attachments[0].picture_url, class: 'showPics' %>
+            <% end %>
           <% end %>
 
           <%= link_to plant.binomial, plant, class: "btn btn-danger", :style => 'width:100%;' %>

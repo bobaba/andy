@@ -24,6 +24,8 @@ class ResourcesController < ApplicationController
 
   # GET /resources/1/edit
   def edit
+    @resource_attachment = @resource.resource_attachments.build
+    @resource_attachments = @resource.resource_attachments.all
   end
 
   # POST /resources
@@ -33,9 +35,11 @@ class ResourcesController < ApplicationController
 
     respond_to do |format|
       if @resource.save
-        params[:resource_attachments]['picture'].each do |a|
-          @resource_attachment = @resource.resource_attachments.create!(:picture => a)
-       end
+        unless params[:resource_attachments] == nil
+          params[:resource_attachments]['picture'].each do |a|
+            @resource_attachment = @resource.resource_attachments.create!(:picture => a)
+          end
+        end
         format.html { redirect_to @resource, notice: 'Resource was successfully created.' }
         format.json { render :show, status: :created, location: @resource }
       else
@@ -48,8 +52,16 @@ class ResourcesController < ApplicationController
   # PATCH/PUT /resources/1
   # PATCH/PUT /resources/1.json
   def update
+
     respond_to do |format|
       if @resource.update(resource_params)
+        unless params[:resource_attachments] == nil
+          params[:resource_attachments]['picture'].each do |a|
+            @resource_attachment = @resource.resource_attachments.create!(:picture => a)
+          end
+          format.html { redirect_to edit_resource_path(@resource.id), notice: 'Picture added!'}
+        end
+
         format.html { redirect_to @resource, notice: 'Resource was successfully updated.' }
         format.json { render :show, status: :ok, location: @resource }
       else
@@ -62,10 +74,14 @@ class ResourcesController < ApplicationController
   # DELETE /resources/1
   # DELETE /resources/1.json
   def destroy
+
+    @resource.resource_attachments.each do |kill|
+      kill.destroy
+      Dir.delete("public/uploads/resource_attachment/picture/#{kill.id}")
+    end
     @resource.destroy
-    @resource.resource_attachments.destroy_all
     respond_to do |format|
-      format.html { redirect_to resources_url, notice: 'Resource was successfully destroyed.' }
+      format.html { redirect_to plantdb_path, notice: 'Resource was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
