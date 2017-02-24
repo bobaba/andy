@@ -6,9 +6,10 @@ class PagesController < ApplicationController
   end
 
   def resources
-    @resources = Resource.all
+    @resources = Resource.search(params[:search])
   end
 
   def map_florida
   end
+
 end

@@ -1,0 +1,19 @@
+
+  <%= link_to "All", plantdb_path, class: "btn btn-warning" %>
+  <%= form_tag plantdb_path, :method => 'get' do %>
+  <p>
+      <%= text_field_tag :search, params[:search], :style => "color:black;" %>
+      <%= submit_tag "Search", :name => nil, class: "btn btn-danger" %>
+  </p>
+  <% end %>
+
+  <!-- <div class="btn-group">
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Genus <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+      <% @resources.each do |genus| %>
+        <li><a href="#<%= genus.binomial.gsub(" ", '')%>"><%= genus.binomial.split(" ")[0] %></a></li>
+      <% end %>
+    </ul>
+  </div> -->
