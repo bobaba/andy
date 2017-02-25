@@ -1,0 +1,29 @@
+<div class="container">
+  <div align="right">
+    <% if current_user %>
+      <%= link_to "Add New Event", new_event_path, class: "btn btn-warning" %>
+      <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-danger" %>
+    <% end %>
+  </div>
+
+<%= render 'pages/filterEvents' %>
+
+<div class="row">
+  <% @events.each do |event| %>
+  <div class="col-md-4">
+    <div class="panel panel-default" style="background:transparent;height:300px;">
+      <div class="panel-body" style="text-align:center;overflow:hidden;">
+        <div class="calIndex">
+          <%= link_to event do %>
+            <h3><%= event.name %></h3><br>
+            <h4><%= event.location %></h4>
+          <% end %>
+        </div>
+        <%= link_to event.start_time.strftime('%b %d, %Y'), event, class: "btn btn-danger", :style => 'width:100%;' %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+</div>
+</div>

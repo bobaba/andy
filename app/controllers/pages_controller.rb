@@ -3,10 +3,13 @@ class PagesController < ApplicationController
   end
 
   def calendar
+    @events = Event.search("eventCal", params[:search])
+    @events = @events.sort_by {|obj| obj.start_time}
+
   end
 
   def resources
-    @resources = Resource.search(params[:search])
+    @resources = Resource.search("plantdb", params[:search])
   end
 
   def map_florida

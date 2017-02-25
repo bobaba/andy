@@ -1,0 +1,71 @@
+// Place all the styles related to the Events controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.eventDisplay{
+  color:black;
+  padding: 0;
+  background-color: grey;
+  display:block;
+  margin-top: 15px;
+}
+
+.event-header h2{
+  margin-bottom: 5px;
+  color: #cbd82e;
+}
+.event-header{
+  background-color: #1c4a26;
+  border: 4px solid #ffff00;
+  padding: 10px;
+}
+.event-date{
+  display: inline-block;
+  margin: 10px 0;
+  font-family: inherit;
+  font-weight: bold;
+  line-height: 20px;
+  color: white;
+}
+.event-location{
+  display: inline-block;
+  float: right;
+  margin: 10px 0;
+  font-family: inherit;
+  font-weight: bold;
+  line-height: 20px;
+  color: white;
+  font-size: 1.5em;
+}
+
+.timeDesc{
+  display:block;
+  font-size: 1em;
+  background-color: #4e3b2a;
+  color: #d9e502;
+  padding: 15px;
+}
+
+.calIndex{
+  background-color: white;
+  width: 90%;
+  margin-left: 5%;
+  height: 200px;
+  padding-top: 15px;
+  a{
+    color: black;
+  }
+}
+
+
+#event_start_time_3i,#event_start_time_2i,#event_start_time_1i,#event_start_time_4i, #event_start_time_5i,#event_end_time_3i,#event_end_time_2i,#event_end_time_1i,#event_end_time_4i, #event_end_time_5i{
+  width: 150px;
+  display: inline-block;
+}
+
+
+// FOR A MAP TO THE EVENT
+#map{
+  width: 100%;
+  height: 400px;
+  margin:0;
+}

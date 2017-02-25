@@ -7,6 +7,7 @@ class Ability
     elsif user.admin?
       can :manage, Resource
       can :manage, ResourceAttachment
+      can :manage, Event
     end
 
 
