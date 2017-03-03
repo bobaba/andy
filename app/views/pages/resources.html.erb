@@ -1,16 +1,29 @@
+<br>
 <div class="container">
 <div align="right">
   <% if current_user %>
     <%= link_to "Add New Plant", new_resource_path, class: "btn btn-warning" %>
-    <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-danger" %>
   <% end %>
 </div>
 <%= render 'pages/filterPlants' %>
 
+<% if @resources.count == 0 %>
+  <strong> Your search came up with nothing!</strong>
+  <br>
+  Try:
+  <ul>
+    <li>Searching by genus</li>
+    <li>Searching by species</li>
+    <li>Spelling all or part of the common name correctly</li>
+    <li>'edible'</li>
+    <li>'tea'</li>
+    <li>'tuber'</li>
+  </ul>
+<% else %>
   <div class="row">
     <% @resources.sort.each do |plant| %>
     <div class="col-md-4">
-      <div id="<%= plant.binomial.gsub(" ", '')%>" class="panel panel-default" style="background:transparent;">
+      <div class="panel panel-default" style="background:transparent;border:none;height:250px;box-shadow:none;">
         <div class="panel-body" style="text-align:center;overflow:hidden;">
           <%= link_to plant do %>
             <% if plant.resource_attachments[0] == nil %>
@@ -20,11 +33,14 @@
             <% end %>
           <% end %>
 
-          <%= link_to plant.binomial, plant, class: "btn btn-danger", :style => 'width:100%;' %>
+          <%= link_to plant.binomial, plant, class: "btn btn-danger", :style => 'width:100%;box-shadow:2px 2px 5px rgba(0,0,0,0.3);' %>
         </div>
       </div>
     </div>
     <% end %>
   </div>
-
+<% end %>
+<div style="text-align:center">
+  <%= will_paginate @resources, class: 'digg_pagination' %>
+</div>
 </div>

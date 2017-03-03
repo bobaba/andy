@@ -1,14 +1,15 @@
-<p id="notice"><%= notice %></p>
-
+<br>
+<div class="container">
 <p>
   <strong>Resource:</strong>
-  <%= @resource_attachment.resource_id %>
+  <%= @plants.find(@resource_attachment.resource_id).common %>
 </p>
 
 <p>
   <strong>Picture:</strong>
-  <%= @resource_attachment.picture %>
+  <%= image_tag @resource_attachment.picture_url %>
 </p>
 
 <%= link_to 'Edit', edit_resource_attachment_path(@resource_attachment) %> |
 <%= link_to 'Back', resource_path(@resource_attachment.resource_id) %>
+</div>

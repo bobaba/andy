@@ -1,6 +1,9 @@
+<br>
+<div class="container">
 <h1>Editing Resource Attachment</h1>
+<%= link_to 'Back', resource_path(@resource_attachment.resource_id), class: "btn btn-warning" %>
 
 <%= render 'form', resource_attachment: @resource_attachment %>
 
-<%= link_to 'Show', @resource_attachment %> |
-<%= link_to 'Back', resource_path(@resource_attachment.resource_id) %>
+
+</div>

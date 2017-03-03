@@ -43,29 +43,83 @@
   background-color: #4e3b2a;
   color: #d9e502;
   padding: 15px;
+  border: 2px solid black;
 }
 
 .calIndex{
-  background-color: white;
+  background-color: #effcf7;
   width: 90%;
   margin-left: 5%;
-  height: 200px;
-  padding-top: 15px;
+  height: 150px;
+  padding: 5%;
+  position: relative;
   a{
-    color: black;
+    color: #c45c62;
   }
+  h3{
+    margin-bottom: auto;
+    position:absolute;
+    top: 10px;
+    left: 2%;
+    width: 96%;
+    text-align: center;
+  }
+  h4{
+    color: green;
+    position: absolute;
+    bottom: 5px;
+    margin-bottom: 0;
+    left: 2%;
+    width: 96%;
+    text-align: center;
+  }
+  border-width: 2px 2px 0px 2px;
+  border-style: ridge;
+  border-color: black;
+  box-shadow: 0 -2px 15px rgba(0,0,0,0.4);
+
 }
 
 
-#event_start_time_3i,#event_start_time_2i,#event_start_time_1i,#event_start_time_4i, #event_start_time_5i,#event_end_time_3i,#event_end_time_2i,#event_end_time_1i,#event_end_time_4i, #event_end_time_5i{
-  width: 150px;
+#event_start_time_1i,#event_start_time_4i, #event_end_time_1i,#event_end_time_4i, {
+  width: 85px;
+  display: inline-block;
+}
+#event_start_time_3i,#event_end_time_3i,#event_end_time_5i, #event_start_time_5i{
+  width: 65px;
+  display: inline-block;
+}
+#event_start_time_2i,#event_end_time_2i{
+  width: 130px;
   display: inline-block;
 }
 
+.textFieldAlt{
+  background: transparent;
+  width: 100%;
+  text-align: center;
+  border: 2px dotted grey;
+  height: 40px;
+  font-size: 35px;
+}
 
 // FOR A MAP TO THE EVENT
 #map{
   width: 100%;
   height: 400px;
   margin:0;
+  border: 2px solid black;
+}
+
+.timely{
+  border:1px solid yellow;
+  padding:2px;
+  background:#8c3432;
+}
+
+// formatting smaller screens!
+@media only screen and (max-width: 400px) {
+  .timely{
+    font-size: 3vw;
+  }
 }

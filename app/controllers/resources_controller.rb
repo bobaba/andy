@@ -4,10 +4,11 @@ class ResourcesController < ApplicationController
   load_and_authorize_resource
   skip_authorize_resource :only => :show
 
+
   # GET /resources
   # GET /resources.json
   def index
-    @resources = Resource.all
+    @resources = Resource.all.paginate(:page => params[:page], :per_page => 25)
   end
 
   # GET /resources/1
@@ -40,7 +41,7 @@ class ResourcesController < ApplicationController
             @resource_attachment = @resource.resource_attachments.create!(:picture => a)
           end
         end
-        format.html { redirect_to @resource, notice: 'Resource was successfully created.' }
+        format.html { redirect_to @resource, notice: "#{@resource.common} was successfully created!" }
         format.json { render :show, status: :created, location: @resource }
       else
         format.html { render :new }
@@ -62,7 +63,7 @@ class ResourcesController < ApplicationController
           format.html { redirect_to edit_resource_path(@resource.id), notice: 'Picture added!'}
         end
 
-        format.html { redirect_to @resource, notice: 'Resource was successfully updated.' }
+        format.html { redirect_to @resource, notice: "#{@resource.common} was successfully updated!" }
         format.json { render :show, status: :ok, location: @resource }
       else
         format.html { render :edit }
@@ -81,7 +82,7 @@ class ResourcesController < ApplicationController
     end
     @resource.destroy
     respond_to do |format|
-      format.html { redirect_to plantdb_path, notice: 'Resource was successfully destroyed.' }
+      format.html { redirect_to plantdb_path, notice: "#{@resource.common} was removed from the PlantDB" }
       format.json { head :no_content }
     end
   end

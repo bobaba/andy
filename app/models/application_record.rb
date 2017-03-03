@@ -2,7 +2,7 @@ class ApplicationRecord < ActiveRecord::Base
   self.abstract_class = true
 
   def self.search(page, search)
-    if page == "plantdb"
+      if page == "plantdb"
       if search
         where('common LIKE ? OR binomial LIKE ? OR description LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%")
       else

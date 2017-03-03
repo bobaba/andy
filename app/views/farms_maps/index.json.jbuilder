@@ -1,0 +1,1 @@
+json.array! @farms_maps, partial: 'farms_maps/farms_map', as: :farms_map

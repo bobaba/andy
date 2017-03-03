@@ -17,3 +17,10 @@
 //= require turbolinks
 //= require_tree .
 //= require bootstrap
+
+
+window.setTimeout(function() {
+    $(".alert-dismissible").fadeTo(400, 0).slideUp(400, function(){
+        $(this).remove();
+    });
+}, 2000);

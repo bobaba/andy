@@ -1,5 +1,5 @@
-<p id="notice"><%= notice %></p>
 
+<br>
 <div class="container">
 
 <%= link_to 'Back', plantdb_path, class: "btn btn-primary" %>
@@ -28,9 +28,14 @@
 <!-- <h3 class="labelBox">Pictures</h3> -->
   <% @resource_attachments.each do |p| %>
   <div class="plantPictures">
-    <%= link_to p.picture_url do %>
-      <%= image_tag p.picture_url %>
-      <%end%> <br>
+    <div class="<%= rotateImage(p.rotate) %>">
+      <%= link_to p.picture_url do %>
+        <%= image_tag p.picture_url %>
+      <%end%>
+    </div>
+     <br>
+  </div>
+  <div class="picCaption">
     <%= p.caption %><br>
   </div>
   <% end %>

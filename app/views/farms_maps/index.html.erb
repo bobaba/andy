@@ -1,0 +1,45 @@
+<div class="container">
+<br>
+<h1>Index of Locations for Farm Map</h1>
+<%= link_to 'View Map', map_path, class: "btn btn-primary", data: {turbolinks: false} %>
+<%= link_to 'Add a New Location', new_farms_map_path, class: "btn btn-warning" %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th style="width:654px;">Description</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @farms_maps.reverse.each do |farms_map| %>
+      <tr>
+        <td><%= farms_map.name %></td>
+        <td><%= farms_map.address %></td>
+        <td>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapsed_<%= farms_map.id %>" aria-expanded="false" aria-controls="collapsed_<%= farms_map.id %>">
+          Show Description as it is currently
+        </button>
+        <div class="collapse" id="collapsed_<%= farms_map.id %>">
+          <div class="well">
+            <div class="farmName">
+              <%= farms_map.name %>
+            </div>
+            <%= farms_map.description.html_safe %>
+          </div>
+        </div>
+        </td>
+        <td><%= link_to 'Edit', edit_farms_map_path(farms_map), class: "btn btn-warning" %></td>
+        <td><%= link_to 'Destroy', farms_map, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure you want to remove this from the map?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= will_paginate @farms_maps, class: 'digg_pagination' %>
+</div>

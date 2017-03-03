@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170225060058) do
+ActiveRecord::Schema.define(version: 20170302230317) do
 
   create_table "events", force: :cascade do |t|
     t.string   "name"
@@ -23,6 +23,17 @@ ActiveRecord::Schema.define(version: 20170225060058) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.string   "address"
+    t.string   "poster"
+  end
+
+  create_table "farms_maps", force: :cascade do |t|
+    t.string   "name"
+    t.string   "address"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "plant_pictures", force: :cascade do |t|
@@ -38,6 +49,7 @@ ActiveRecord::Schema.define(version: 20170225060058) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.string   "caption"
+    t.integer  "rotate"
   end
 
   create_table "resources", force: :cascade do |t|

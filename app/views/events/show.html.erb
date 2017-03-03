@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<br>
 <div class="container">
   <%= link_to 'Back', calendar_path, class: "btn btn-primary" %>
   <% if current_user %>
@@ -16,44 +16,68 @@
         </p>
         <p class="event-date">
           <%= @event.start_time.strftime('%b %d, %Y') %>
+          <% if @event.start_time.strftime('%m%d%Y') != @event.end_time.strftime('%m%d%Y') %>
+            - <%= @event.end_time.strftime('%b %d, %Y') %>
+          <% end %>
         </p>
 
       </div>
       <div class="timeDesc">
         <!-- time start and end -->
-        <strong>Time:</strong> <%= @event.start_time.strftime('%l:%M%p') %> -
-        <%= @event.end_time.strftime('%l:%M%p') %> <br>
+        <span class="timely"> &nbsp;<strong>Time:</strong> &nbsp;
+        <% if @event.start_time.strftime('%m%d%Y') == @event.end_time.strftime('%m%d%Y') %>
+          <%= @event.start_time.strftime('%l:%M%p') %> -
+          <%= @event.end_time.strftime('%l:%M%p') %>
+        <% else %>
+           <%= @event.start_time.strftime('%-m/%e/%y (%l:%M%p)') %>
+           -
+          <%= @event.end_time.strftime('%-m/%e/%y (%l:%M%p)') %>
+        <% end %>
+      </span>
+
+        <br><br>
         <%= @event.description.html_safe %>
+        <br>
+        <% unless @event.poster_url == nil %>
+          <%= link_to @event.poster_url do %>
+            <%= image_tag @event.poster_url, class: "eventPoster" %>
+          <% end %>
+        <% end %>
+        <br>
       </div>
 
-      <div id="map"></div>
+      <% unless @event.latitude.nil? %>
+        <div id="map"></div>
+      <% end %>
     </div>
 
-    <%= javascript_tag do %>
-      latitude = '<%= j @event.latitude.to_s %>';
-      longitude = '<%= j @event.longitude.to_s %>';
-    <% end %>
+
 </div>
 
 
 
+<% unless @event.latitude.nil? %>
+    <%= javascript_tag do %>
+      latitude = '<%= j @event.latitude.to_s %>';
+      longitude = '<%= j @event.longitude.to_s %>';
+    <% end %>
+    <script>
 
-<script>
+    function initialize() {
+            var myLatlng = new google.maps.LatLng(latitude, longitude)
+            var map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 10,
+              center: myLatlng,
+              scrollwheel: false
+            });
+            var marker = new google.maps.Marker({
+              position: myLatlng,
+              map: map
+            });
+          }
+    </script>
 
-function initMap() {
-        var myLatlng = new google.maps.LatLng(latitude, longitude)
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 10,
-          center: myLatlng,
-          scrollwheel: false
-        });
-        var marker = new google.maps.Marker({
-          position: myLatlng,
-          map: map
-        });
-      }
-</script>
-
-<script
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2aJd8RurqTDufSYh9XmmqxVhMbo7TKrE&callback=initMap">
-</script>
+    <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2aJd8RurqTDufSYh9XmmqxVhMbo7TKrE&callback=initialize">
+    </script>
+<% end %>

@@ -2,9 +2,14 @@
   <div class="plantPictures">
     <%= image_tag @resource_attachment.picture, class: 'showPics' %>
     <%= form_for(@resource_attachment) do |f| %>
-      <div class="field">
+      <div class="field" style="color:yellow;">
         <%= f.text_field :caption, placeholder: "Add a caption!", class: 'textField' %>
       </div>
+      <br>
+      Rotated
+      <span style="color:black">
+        <%= f.select(:rotate, [0, 90, 180, 270]) %>
+      </span> degrees
       <br>
       <div class="field changePic">
         <strong>Change Picture</strong><br>
@@ -17,6 +22,7 @@
       <div class="actions" align="center">
         <%= f.submit "Update Picture", class: "btn btn-warning btn-lg" %>
       </div>
+      <br>
   </div>
   <% end %>
 </div>

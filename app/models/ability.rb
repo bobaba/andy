@@ -8,8 +8,10 @@ class Ability
       can :manage, Resource
       can :manage, ResourceAttachment
       can :manage, Event
+      can :manage, FarmsMap
     end
-
+  end
+end
 
 
 
@@ -46,5 +48,3 @@ class Ability
     #
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
-  end
-end

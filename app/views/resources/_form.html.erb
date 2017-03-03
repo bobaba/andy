@@ -33,32 +33,31 @@
   <span style="color:red;">>>> Save any text before adding additional photos or editing captions!</span>
 </div>
 
-<div class="plantPictures">
+
 <% unless @resource_attachments.nil? %>
   <% @resource_attachments.each do |p| %>
-
     <div class="plantPictures">
-      <%= link_to p.picture_url do %>
-        <%= image_tag p.picture_url %>
-      <%end%> <br>
+      <div class="<%= rotateImage(p.rotate) %>">
+        <%= link_to p.picture_url do %>
+          <%= image_tag p.picture_url %>
+        <%end%>
+      </div>
+    </div>
+     <div class="picCaption">
       <%= p.caption %><br>
       <%= link_to "Edit Caption / Change Picture", edit_resource_attachment_path(p), class: "btn btn-warning" %>
       <%= link_to "Remove Picture", resource_attachment_path(p), method: :delete, class: "btn btn-danger" %>
     </div>
   <% end %>
   <% end %>
-
+  <br>
+  <br><br>
+<div class="picCaption">
   <strong>Add a Picture:</strong>
   <%= f.file_field :picture, :multiple => true, name: "resource_attachments[picture][]", class: 'filin' %>
-  <!-- <%= f.fields_for :resource_attachments do |p| %>
-     <div class="field">
-       <strong>Pictures</strong><br>
-       <strong>Note:</strong> Select which pictures you want to add here. You can edit captions in the next screen!<br>If you are updating an already existing resource, you can change/edit your photos in the next screen as well.<br><br>
-       <%= p.file_field :picture, :multiple => true, name: "resource_attachments[picture][]" %>
-       <br>
-     </div>
-   <% end %> -->
+  <br>
 </div>
+
 
 
   <br>

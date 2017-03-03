@@ -1,0 +1,44 @@
+
+<%= form_for(farms_map) do |f| %>
+  <% if farms_map.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(farms_map.errors.count, "error") %> prohibited this farms_map from being saved:</h2>
+
+      <ul>
+      <% farms_map.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.text_field :name, placeholder: "Name of Location", class: "textField mapsField" %>
+  </div>
+
+  <div class="field">
+    <%= f.text_field :address, placeholder: "Direct Address of Location", class: "textField mapsField2" %>
+  </div>
+
+  <div class="field hidden">
+    <%= f.label :latitude %>
+    <%= f.text_field :latitude %>
+  </div>
+
+  <div class="field hidden">
+    <%= f.label :longitude %>
+    <%= f.text_field :longitude %>
+  </div>
+
+  <br><br>
+  <div class="field" style="background-color:white;">
+    <div style="font-size: 22px;margin-bottom:20px;"><strong>Description</strong><hr></div>
+    <%= f.trix_editor :description %>
+  </div>
+
+  <br>
+  <div class="actions" align="center">
+    <%= f.submit "Save to Map", class: "btn btn-warning btn-lg" %>
+  </div>
+<% end %>
+<div style="height:150px;"></div>

@@ -26,14 +26,14 @@
 
   <div class="timeDesc">
     <br>
-    <div class="field">
+    <div class="field" style="color:yellow;">
       <strong>Start Date &amp; Time</strong><br>
-      <%= f.datetime_select :start_time, { ampm: true, order: [:month, :day, :year] }, { class: "form-control dateTimePicker" } %>
+      <%= f.datetime_select :start_time, { ampm: true, order: [:month, :day, :year], :default => {:hour => 12, :minute => 00}, :minute_step => 15 }, { class: "form-control dateTimePicker" } %>
     </div>
     <br>
-    <div class="field">
+    <div class="field" style="color:yellow;">
       <strong>End Date &amp; Time</strong><br>
-      <%= f.datetime_select :end_time, { ampm: true, order: [:month, :day, :year] }, { class: "form-control dateTimePicker" } %>
+      <%= f.datetime_select :end_time, { ampm: true, order: [:month, :day, :year], :default => {:hour => 12 ,:minute => 00}, :minute_step => 15 }, { class: "form-control dateTimePicker" } %>
     </div>
 
                 <div class="field hidden">
@@ -45,15 +45,25 @@
                   <%= f.label :longitude %>
                   <%= f.text_field :longitude %>
                 </div>
-    <br>
-    <div class="field">
+    <br><br>
+    <div class="field" style="color:yellow;">
       <strong>Description of Event</strong>
       <%= f.trix_editor :description %>
     </div>
-    <div class="field">
-      <strong>Street Address for Mapped Location of Event</strong><br>
-      <%= f.text_field :address, class: "textField" %>
+    <br><br>
+    <% unless @event.poster.nil? %>
+      <%= image_tag @event.poster, class: "eventPoster", alt: "No Image Selected" %>
+    <% end %>
+    <br><br>
+    <strong>Upload or Change Event Poster (optional)</strong>
+    <%= f.file_field :poster %>
+    <br>
+    <br>
+    <strong>Address of Event</strong>
+    <div class="field" style="color:white;">
+      <%= f.text_field :address, class: 'textFieldAlt', placeholder: "Street Address for Map of Event Location" %>
     </div>
+    <div align="center">Valid examples:  'Cayo Costa State Park' ,  'Port Charlotte, FL' ,  '2605 SW Baldwin St Arcadia, FL'</div>
 
 
     <br>

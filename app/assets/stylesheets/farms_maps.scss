@@ -1,0 +1,67 @@
+// Place all the styles related to the FarmsMaps controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#mapCanvas {
+    width: 100%;
+    height: 95%;
+    color: black;
+}
+
+.field{
+  color:black;
+}
+
+// this should mess with the infowindow...
+.gm-style-iw {
+width: 100%; 
+min-height: 150px;
+}
+
+.info_content{
+  overflow: auto;
+  img{
+    width: 100%;
+    height: auto;
+  }
+  h3{
+
+  }
+  .farmName{
+    background-color: green;
+    color: white;
+    height: 35px;
+    text-align: center;
+    padding-top: 5px;
+    font-size: 1.5em;
+  }
+
+}
+
+// INDEX VIEWS
+.well{
+  max-width: 654px;
+  color: black;
+  .farmName{
+    background-color: green;
+    color: white;
+    height: 35px;
+    text-align: center;
+    padding-top: 5px;
+    font-size: 1.5em;
+    margin-bottom: 15px;
+  }
+  img{
+    width: 100%;
+  }
+}
+
+.mapsField{
+  height: 60px;
+  font-size: 50px;
+  color: white;
+}
+.mapsField2{
+  height: 40px;
+  font-size: 30px;
+  color: yellow;
+}

@@ -1,5 +1,7 @@
+<div class="container">
+<br>
 <h1>New Event</h1>
+<%= link_to 'Back', calendar_path, class: "btn btn-warning" %>
 
 <%= render 'form', event: @event %>
-
-<%= link_to 'Back', events_path %>
+</div>

@@ -7,7 +7,7 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
+    @events = Event.all.paginate(:page => params[:page], :per_page => 25)
   end
 
   # GET /events/1
@@ -57,7 +57,12 @@ class EventsController < ApplicationController
   # DELETE /events/1
   # DELETE /events/1.json
   def destroy
+
     @event.destroy
+    if Dir.exist?("public/uploads/event/poster/#{@event.id}")
+      Dir.delete("public/uploads/event/poster/#{@event.id}")
+    end
+
     respond_to do |format|
       format.html { redirect_to calendar_path, notice: 'Event was successfully destroyed.' }
       format.json { head :no_content }
@@ -72,6 +77,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:name, :location, :latitude, :longitude, :description, :start_time, :end_time, :address)
+      params.require(:event).permit(:name, :location, :latitude, :longitude, :description, :start_time, :end_time, :address, :poster)
     end
 end

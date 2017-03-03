@@ -1,29 +1,50 @@
+<br>
+
 <div class="container">
   <div align="right">
     <% if current_user %>
       <%= link_to "Add New Event", new_event_path, class: "btn btn-warning" %>
-      <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-danger" %>
     <% end %>
   </div>
 
 <%= render 'pages/filterEvents' %>
-
+<% if @events.count == 0 %>
+  <strong> Your search came up with nothing!</strong>
+  <br>
+  Try:
+  <ul>
+    <li>Searching by location of event</li>
+    <li>Searching by what might be in the description</li>
+    <li>Spelling all or part of the above correctly</li>
+  </ul>
+<% else %>
 <div class="row">
   <% @events.each do |event| %>
+
   <div class="col-md-4">
-    <div class="panel panel-default" style="background:transparent;height:300px;">
+    <div class="panel panel-default" style="background:transparent;height:200px;border:none;box-shadow:none;">
       <div class="panel-body" style="text-align:center;overflow:hidden;">
+
         <div class="calIndex">
-          <%= link_to event do %>
+          <%= link_to event, data: { turbolinks: false } do %>
             <h3><%= event.name %></h3><br>
             <h4><%= event.location %></h4>
           <% end %>
         </div>
-        <%= link_to event.start_time.strftime('%b %d, %Y'), event, class: "btn btn-danger", :style => 'width:100%;' %>
+
+        <% if Time.now > event.end_time %>
+          <% ending = " ago" %>
+        <% elsif Time.now < event.start_time %>
+          <% ending = " from now" %>
+        <% end %>
+
+        <% btn_disp = event.start_time.strftime('%b %d, %Y').to_s + " >> [" + distance_of_time_in_words(Time.now, event.start_time).sub("about", '') + ending + "]"  %>
+        <%= link_to btn_disp, event, data: { turbolinks: false }, class: "btn btn-danger", :style => 'width:100%;box-shadow:2px 2px 5px rgba(0,0,0,0.3);' %>
       </div>
     </div>
   </div>
   <% end %>
 </div>
+<% end %>
 </div>
 </div>

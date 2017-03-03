@@ -102,15 +102,16 @@ a:focus {
   color: white;
 }
 @media (min-width: 768px) {
-  .navbar-custom {
+  /* THIS IS THE FANCY NAVBAR CHANGES FOR DESKTOP */
+  /*.navbar-custom {
     padding: 20px 0;
     border-bottom: none;
     letter-spacing: 1px;
-    background: transparent;
+    background: rgba(0,0,0,0.5);
     -webkit-transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
     -moz-transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
     transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
-  }
+  }*/
   .navbar-custom.top-nav-collapse {
     padding: 0;
     background: #1d9b6c;
@@ -124,12 +125,17 @@ a:focus {
   padding: 100px 0;
   text-align: center;
   color: white;
-  background: url(image-path("intro-bg.jpg")) no-repeat bottom center scroll;
+  background: url(image-path("intro-bg.jpg")) no-repeat bottom center fixed;
   background-color: black;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
   -o-background-size: cover;
+}
+@media (max-width: 767px) {
+  .intro{
+    background-position: right;
+  }
 }
 .intro .intro-body {
   display: table-cell;
