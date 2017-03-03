@@ -1,6 +1,4 @@
-User.create!([
-  {email: "andyfirk@yahoo.com", encrypted_password: "$2a$11$c7xRmTnk2ROzDutk9exQQudHFcGzQdGPTKY3PsGyK6ZPGT.Lex1R.", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 30, current_sign_in_at: "2017-03-03 19:01:44", last_sign_in_at: "2017-03-03 19:01:04", current_sign_in_ip: "::1", last_sign_in_ip: "::1", role: "admin"}
-])
+
 Event.create!([
   {name: "Asian Market Tour", location: "Mustang Flea Market", latitude: 27.8392161, longitude: -82.7469678, description: "<div>A brief description of event</div>", start_time: "2017-03-04 17:00:00", end_time: "2017-03-04 20:00:00", address: "7901 Park blvd N, Pinellas Park, FL 33781", poster: "tester.jpg"},
   {name: "Made Up Event", location: "Made Up Park", latitude: nil, longitude: nil, description: "<div>We will be camping! It will be great! Hooray!</div>", start_time: "2017-04-04 13:00:00", end_time: "2017-04-05 21:00:00", address: "", poster: nil},
