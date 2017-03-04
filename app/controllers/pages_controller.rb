@@ -9,8 +9,7 @@ class PagesController < ApplicationController
         event.destroy
       end
     end
-    @events = Event.search("eventCal", params[:search])
-    @events = @events.sort_by {|obj| obj.start_time}
+    @events = Event.search("eventCal", params[:search]).sort_by {|obj| obj.start_time}
 
   end
 
