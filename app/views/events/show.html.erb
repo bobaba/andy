@@ -61,6 +61,9 @@
       latitude = '<%= j @event.latitude.to_s %>';
       longitude = '<%= j @event.longitude.to_s %>';
     <% end %>
+    <script
+    src="https://maps.googleapis.com/maps/api/js?key=#{ENV['Events_maps_api']}">
+    </script>
     <script>
 
     function initialize() {
@@ -75,9 +78,8 @@
               map: map
             });
           }
+          google.maps.event.addDomListener(window, 'load', initialize);
     </script>
 
-    <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2aJd8RurqTDufSYh9XmmqxVhMbo7TKrE&callback=initialize">
-    </script>
+
 <% end %>

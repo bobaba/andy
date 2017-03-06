@@ -7,14 +7,17 @@ class PagesController < ApplicationController
     event.each do |event|
       if (event.end_time + 28800) < Time.now
         event.destroy
+        # alt: mark event to go to archives
       end
     end
-    @events = Event.search("eventCal", params[:search]).sort_by {|obj| obj.start_time}
+    # @events = Event.search("eventCal", params[:search]).order(start_time: :asc).paginate(:page => params[:page], :per_page => 12)
+    @events = Event.calSearch(params[:search]).order(start_time: :asc).paginate(:page => params[:page], :per_page => 12)
 
   end
 
   def resources
-    @resources = Resource.search("plantdb", params[:search]).paginate(:page => params[:page], :per_page => 12)
+    # @resources = Resource.search("plantdb", params[:search]).order(binomial: :asc).paginate(:page => params[:page], :per_page => 12)
+    @resources = Resource.plantSearch(params[:search]).order(binomial: :asc).paginate(:page => params[:page], :per_page => 12)
   end
 
   def map_florida

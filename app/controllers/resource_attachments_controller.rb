@@ -69,6 +69,7 @@ class ResourceAttachmentsController < ApplicationController
       @resource_attachment = ResourceAttachment.find(params[:id])
     end
 
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def resource_attachment_params
       params.require(:resource_attachment).permit(:resource_id, :picture, :caption, :rotate)
